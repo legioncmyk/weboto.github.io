@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoServ Pro - Platform Edukasi Otomotif Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        /* === VARIABLES & RESET === */
+        :root {
+            --metalic-black: #1f1f1f;
+            --hard-red: #e30613;
+            --neutral-gray: #e0e0e0;
+            --white: #ffffff;
+            --dark-gray: #333333;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--metalic-black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* === TYPOGRAPHY === */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.5rem; }
+        
+        p {
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        /* === BUTTONS === */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background-color: var(--hard-red);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: #c00510;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            border-color: var(--hard-red);
+            color: var(--hard-red);
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--hard-red);
+            color: var(--white);
+        }
+        
+        /* === HEADER === */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--metalic-black);
+        }
+        
+        .logo-text span {
+            color: var(--hard-red);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            font-weight: 500;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--hard-red);
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .admin-login {
+            margin-left: 2rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--metalic-black);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        /* === HERO SECTION === */
+        .hero {
+            min-height: 100vh;
+            padding: 7rem 5% 2rem;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, var(--metalic-black) 50%, var(--neutral-gray) 50%);
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            color: var(--white);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .typewriter {
+            border-right: 3px solid var(--hard-red);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--hard-red) }
+        }
+        
+        /* === FEATURES SECTION === */
+        .features {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--hard-red);
+        }
+        
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(227, 6, 19, 0.1);
+            border-radius: 50%;
+        }
+        
+        .feature-icon img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* === CATALOG SECTION === */
+        .catalog {
+            padding: 5rem 5%;
+            background-color: var(--neutral-gray);
+        }
+        
+        .catalog-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .catalog-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        .catalog-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .catalog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .catalog-info {
+            padding: 1.5rem;
+        }
+        
+        /* === ABOUT SECTION === */
+        .about {
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* === BENEFITS SECTION === */
+        .benefits {
+            padding: 5rem 5%;
+            background-color: var(--metalic-black);
+            color: var(--white);
+        }
+        
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-icon {
+            color: var(--hard-red);
+            font-size: 1.5rem;
+        }
+        
+        /* === STATS SECTION === */
+        .stats {
+            padding: 5rem 5%;
+            background-color: var(--white);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-box {
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--hard-red);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* === CONTACT SECTION === */
+        .contact {
+            padding: 5rem 5%;
+            background-color: var(--neutral-gray);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            color: var(--hard-red);
+            font-size: 1.5rem;
+        }
+        
+        .contact-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        /* === FOOTER === */
+        footer {
+            background-color: var(--metalic-black);
+            color: var(--white);
+            padding: 3rem 5%;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links h3 {
+            color: var(--hard-red);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--hard-red);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* === RESPONSIVE DESIGN === */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                background: var(--metalic-black);
+                padding-top: 5rem;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav {
+                margin-top: 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navbar -->
+    <header data-aos="fade-down">
+        <div class="logo-container">
+            <!-- SVG Logo in Base64 -->
+            <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="AutoServ Pro Logo">
+            <span class="logo-text">Auto<span>Serv</span> Pro</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#catalog">Katalog</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <button class="admin-login">Admin</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content" data-aos="fade-right">
+            <h1 class="typewriter">Selamat Datang di AutoServ Pro</h1>
+            <p>Platform digital jurusan otomotif SMK. Edukasi, layanan, dan praktek berbasis web.</p>
+            <div class="hero-buttons">
+                <a href="#diagnosa" class="btn btn-primary">🔧 Mulai Diagnosa</a>
+                <a href="#catalog" class="btn btn-outline">📦 Lihat Katalog</a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="fade-left">
+            <!-- SVG Illustration in Base64 -->
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzFlMWYxZiIvPjxwYXRoIGQ9Ik0xMjUgMjUwYzAtNjkuMSA1Ni0xMjUgMTI1LTEyNXMxMjUgNTYgMTI1IDEyNS01NiAxMjUtMTI1IDEyNS0xMjUtNTYtMTI1LTEyNXoiIGZpbGw9IiNlMzA2MTMiIG9wYWNpdHk9Ii4yIi8+PHBhdGggZD0iTTI1MCAxMjVjLTY5LjEgMC0xMjUgNTYtMTI1IDEyNXM1NiAxMjUgMTI1IDEyNSAxMjUtNTYgMTI1LTEyNS01Ni0xMjUtMTI1LTEyNXptMCAyMjVjLTU1LjIgMC0xMDAtNDUtMTAwLTEwMHM0NS0xMDAgMTAwLTEwMCAxMDAgNDUgMTAwIDEwMC00NSAxMDAtMTAwIDEwMHoiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PHBhdGggZD0iTTI1MCAxNTBjLTU1LjIgMC0xMDAgNDUtMTAwIDEwMHM0NSAxMDAgMTAwIDEwMCAxMDAtNDUgMTAwLTEwMC00NS0xMDAtMTAwLTEwMHptMCAxNTBjLTI3LjYgMC01MC0yMi41LTUwLTUwIDAtMjcuNiAyMi41LTUwIDUwLTUwczUwIDIyLjUgNTAgNTBjMCAyNy42LTIyLjUgNTAtNTAgNTB6IiBmaWxsPSIjZTMwNjEzIi8+PC9zdmc+" alt="Teknisi bekerja">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title" data-aos="fade-up">Fitur Unggulan AutoServ Pro</h2>
+        <div class="feature-cards">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <!-- SVG Icon in Base64 -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="Diagnosa Icon">
+                </div>
+                <h3>Simulasi Diagnosa</h3>
+                <p>Pelajari teknik diagnosa mesin kendaraan dengan simulasi interaktif berbasis kasus nyata.</p>
+                <a href="#diagnosa" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <!-- SVG Icon in Base64 -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNNDQ4IDBINjRDMjguNyAwIDAgMjguNyAwIDY0djI4OGMwIDM1LjMgMjguNyA2NCA2NCA2NGgxNDRsMTI4IDEyOGM5LjQgOS40IDI0LjYgOS40IDMzLjkgMGwyNS0yNWM5LjQtOS40IDkuNC0yNC42IDAtMzMuOUwyODcuOSAzMjBINDQ4YzM1LjMgMCA2NC0yOC43IDY0LTY0VjY0YzAtMzUuMy0yOC43LTY0LTY0LTY0em0tODAgMzUySDY0VjY0aDMwNHYyODh6bTEyOC0xOTJoLTMyYy04LjggMC0xNi03LjItMTYtMTZzNy4yLTE2IDE2LTE2aDMyYzguOCAwIDE2IDcuMiAxNiAxNnMtNy4yIDE2LTE2IDE2em0tMTY4IDY0YzAgOC44IDcuMiAxNiAxNiAxNmgxMjBjOC44IDAgMTYtNy4yIDE2LTE2cy03LjItMTYtMTYtMTZIMzI4Yy04LjggMC0xNiA3LjItMTYgMTZ6bS0xNDQtMGMwLTguOC03LjItMTYtMTYtMTZINzZjLTguOCAwLTE2IDcuMi0xNiAxNnM3LjIgMTYgMTYgMTZoMzJjOC44IDAgMTYtNy4yIDE2LTE2em0wLTk2YzAtOC44LTcuMi0xNi0xNi0xNkg3NmMtOC44IDAtMTYgNy4yLTE2IDE2czcuMiAxNiAxNiAxNmgzMmM4LjggMCAxNi03LjIgMTYtMTZ6Ii8+PC9zdmc+" alt="Booking Icon">
+                </div>
+                <h3>Booking Servis</h3>
+                <p>Sistem booking bengkel digital untuk praktik langsung siswa dan layanan masyarakat.</p>
+                <a href="#booking" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+            </div>
+            
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <!-- SVG Icon in Base64 -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNNDY0IDQ0OEg0OGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhWMTEyYzAtMjYuNSAyMS41LTQ4IDQ4LTQ4aDQxNmMyNi41IDAgNDggMjEuNSA0OCA0OHYyODhjMCAyNi41LTIxLjUgNDgtNDggNDh6TTEyOCAxMjBjLTguOCAwLTE2IDcuMi0xNiAxNnY2NGMwIDguOCA3LjIgMTYgMTYgMTZoMjU2YzguOCAwIDE2LTcuMiAxNi0xNnYtNjRjMC04LjgtNy4yLTE2LTE2LTE2SDEyOHptMCAyNTZjLTguOCAwLTE2IDcuMi0xNiAxNnY2NGMwIDguOCA3LjIgMTYgMTYgMTZoMTkyYzguOCAwIDE2LTcuMiAxNi0xNnYtNjRjMC04LjgtNy4yLTE2LTE2LTE2SDEyOHoiLz48L3N2Zz4=" alt="Laporan Icon">
+                </div>
+                <h3>Laporan PKL</h3>
+                <p>Sistem digital untuk pencatatan dan pengelolaan laporan Praktik Kerja Lapangan siswa.</p>
+                <a href="#pkl" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalog">
+        <h2 class="section-title" data-aos="fade-up">Katalog Populer</h2>
+        <div class="catalog-items">
+            <div class="catalog-card" data-aos="fade-up" data-aos-delay="100">
+                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+" alt="Alat Bengkel">
+                <div class="catalog-info">
+                    <h3>Alat Diagnosa Digital</h3>
+                    <p>Perangkat modern untuk analisis sistem elektronik kendaraan</p>
+                    <a href="#" class="btn btn-primary">Lihat Detail</a>
+                </div>
+            </div>
+            
+            <div class="catalog-card" data-aos="fade-up" data-aos-delay="200">
+                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxwYXRoIGQ9Ik0xMDAgMTUwTDI1MCA1MGwxNTAgMTAwLTE1MCAxMDAgMTUwIDEwMC0xNTAgMTAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTMwNjEzIiBzdHJva2Utd2lkdGg9IjEwIi8+PC9zdmc+" alt="Sparepart">
+                <div class="catalog-info">
+                    <h3>Sparepart Original</h3>
+                    <p>Komponen berkualitas untuk berbagai jenis kendaraan</p>
+                    <a href="#" class="btn btn-primary">Lihat Detail</a>
+                </div>
+            </div>
+            
+            <div class="catalog-card" data-aos="fade-up" data-aos-delay="300">
+                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iMTAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMzA2MTMiIHN0cm9rZS13aWR0aD0iMTAiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMzA2MTMiIHN0cm9rZS13aWR0aD0iMTAiLz48bGluZSB4MT0iMjUwIiB5MT0iNTAiIHgyPSIyNTAiIHkyPSIyNTAiIHN0cm9rZT0iI2UzMDYxMyIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxsaW5lIHgxPSI1MCIgeTE9IjE1MCIgeDI9IjQ1MCIgeTI9IjE1MCIgc3Ryb2tlPSIjZTMwNjEzIiBzdHJva2Utd2lkdGg9IjEwIi8+PC9zdmc+" alt="Toolkit">
+                <div class="catalog-info">
+                    <h3>Toolkit Mekanik</h3>
+                    <p>Set perlengkapan lengkap untuk perawatan kendaraan</p>
+                    <a href="#" class="btn btn-primary">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content" data-aos="fade-right">
+            <h2 class="section-title">Tentang AutoServ Pro</h2>
+            <p>AutoServ Pro adalah platform edukasi otomotif digital yang dikembangkan khusus untuk siswa SMK jurusan otomotif. Platform ini dirancang untuk mendukung pembelajaran teori dan praktik secara terintegrasi.</p>
+            <p>Dikembangkan oleh tim siswa dan guru SMK Otomotif yang berpengalaman, AutoServ Pro menggabungkan pengetahuan teknis dengan teknologi digital untuk menciptakan pengalaman belajar yang lebih interaktif dan efektif.</p>
+            <p>Platform ini tidak hanya berguna untuk siswa, tetapi juga menjadi alat bantu bagi guru dalam menyampaikan materi dan memantau perkembangan siswa.</p>
+        </div>
+        <div class="about-image" data-aos="fade-left">
+            <!-- SVG Illustration in Base64 -->
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2UwZTBjMCIvPjxwYXRoIGQ9Ik0xMjUgMjUwYzAtNjkuMSA1Ni0xMjUgMTI1LTEyNXMxMjUgNTYgMTI1IDEyNS01NiAxMjUtMTI1IDEyNS0xMjUtNTYtMTI1LTEyNXoiIGZpbGw9IiNlMzA2MTMiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTI1MCAxMjVjLTY5LjEgMC0xMjUgNTYtMTI1IDEyNXM1NiAxMjUgMTI1IDEyNSAxMjUtNTYgMTI1LTEyNS01Ni0xMjUtMTI1LTEyNXptMCAyMjVjLTU1LjIgMC0xMDAtNDUtMTAwLTEwMHM0NS0xMDAgMTAwLTEwMCAxMDAgNDUgMTAwIDEwMC00NSAxMDAtMTAwIDEwMHoiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PHBhdGggZD0iTTI1MCAxNTBjLTU1LjIgMC0xMDAgNDUtMTAwIDEwMHM0NSAxMDAgMTAwIDEwMCAxMDAtNDUgMTAwLTEwMC00NS0xMDAtMTAwLTEwMHptMCAxNTBjLTI3LjYgMC01MC0yMi41LTUwLTUwIDAtMjcuNiAyMi41LTUwIDUwLTUwczUwIDIyLjUgNTAgNTBjMCAyNy42LTIyLjUgNTAtNTAgNTB6IiBmaWxsPSIjZTMwNjEzIi8+PC9zdmc+" alt="Tim Pengembang">
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <h2 class="section-title" data-aos="fade-up">Tujuan dan Manfaat</h2>
+        <div class="benefits-list">
+            <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Akses Belajar Digital</h3>
+                    <p>Materi pembelajaran otomotif dapat diakses kapan saja dan di mana saja melalui platform digital.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Praktik Mandiri Simulasi</h3>
+                    <p>Simulasi interaktif memungkinkan siswa berlatih diagnosa dan perbaikan secara virtual sebelum praktik langsung.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Laporan PKL Online</h3>
+                    <p>Sistem terintegrasi untuk pencatatan dan pengelolaan laporan Praktik Kerja Lapangan secara digital.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="benefit-icon">✓</div>
+                <div>
+                    <h3>Booking Servis Real</h3>
+                    <p>Siswa dapat mempraktikkan pengetahuan mereka dengan melayani masyarakat melalui sistem booking terintegrasi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <h2 class="section-title" data-aos="fade-up">Statistik AutoServ Pro</h2>
+        <div class="stats-container">
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="stat-number" id="student-counter">0</div>
+                <p>Siswa Aktif</p>
+            </div>
+            
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-number" id="service-counter">0</div>
+                <p>Servis Berhasil</p>
+            </div>
+            
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-number" id="report-counter">0</div>
+                <p>Laporan PKL</p>
+            </div>
+            
+            <div class="stat-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-number" id="visit-counter">0</div>
+                <p>Kunjungan Hari Ini</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+        <div class="contact-container">
+            <div class="contact-info" data-aos="fade-right">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Lokasi</h3>
+                        <p>SMK Otomotif Teknologi<br>Jl. Pendidikan No. 123, Kota Pendidikan</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Telepon</h3>
+                        <p>(021) 1234-5678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@autoservpro.edu</p>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/6281234567890" class="btn btn-primary" style="margin-top: 1rem;">Chat via WhatsApp</a>
+            </div>
+            
+            <div class="contact-form" data-aos="fade-left">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subjek</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="5" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="AutoServ Pro Logo">
+                    <span class="logo-text">Auto<span>Serv</span> Pro</span>
+                </div>
+                <p>Platform Edukasi & Diagnosa Otomotif Digital untuk Siswa SMK</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#features">Fitur</a></li>
+                    <li><a href="#catalog">Katalog</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Layanan</h3>
+                <ul>
+                    <li><a href="#diagnosa">Simulasi Diagnosa</a></li>
+                    <li><a href="#booking">Booking Servis</a></li>
+                    <li><a href="#pkl">Laporan PKL</a></li>
+                    <li><a href="#learning">E-Learning</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Admin Login</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2025 AutoServ Pro. Seluruh hak cipta dilindungi.</p>
+            <p>Dikembangkan oleh Tim Otomotif SMK Teknologi</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Counter Animation
+        function animateCounter(element, target, duration) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    clearInterval(counter);
+                    element.textContent = target + "+";
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+        
+        // Start counters when stats section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.getElementById('student-counter'), 1250, 2000);
+                    animateCounter(document.getElementById('service-counter'), 543, 1500);
+                    animateCounter(document.getElementById('report-counter'), 287, 1000);
+                    animateCounter(document.getElementById('visit-counter'), 89, 800);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.stats'));
+        
+        // Sticky Header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+        
+        // Typewriter Effect
+        const typewriterElement = document.querySelector('.typewriter');
+        const text = typewriterElement.textContent;
+        typewriterElement.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typewriterElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                typewriterElement.style.borderRight = 'none';
+            }
+        }
+        
+        // Start typewriter effect after a slight delay
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
