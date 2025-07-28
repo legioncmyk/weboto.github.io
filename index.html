@@ -3,971 +3,1419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoServ Pro - Platform Edukasi Otomotif Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Teknik Otomotif UPTD SMKN 1 Rangas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === VARIABLES & RESET === */
-        :root {
-            --metalic-black: #1f1f1f;
-            --hard-red: #e30613;
-            --neutral-gray: #f5f5f5;
-            --white: #ffffff;
-            --dark-gray: #333333;
-            --light-gray: #e0e0e0;
-            --transition: all 0.3s ease;
-        }
-        
+        /* CSS Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --black: #1f1f1f;
+            --blue-light: #00BFFF;
+            --blue-dark: #0A1931;
+            --orange: #FFA500;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
-            color: var(--metalic-black);
-            background-color: var(--white);
+            color: var(--black);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        /* === IMPROVED CONTRAST === */
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--metalic-black);
-        }
-        
-        p, li, span {
-            color: var(--dark-gray);
-        }
-        
-        .dark-bg {
-            background-color: var(--metalic-black);
-            color: var(--white);
-        }
-        
-        .dark-bg h1, 
-        .dark-bg h2, 
-        .dark-bg h3, 
-        .dark-bg h4,
-        .dark-bg p,
-        .dark-bg li {
-            color: var(--white);
-        }
-        
-        .gray-bg {
-            background-color: var(--neutral-gray);
-        }
-        
-        /* === TYPOGRAPHY === */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.5rem; }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        /* === BUTTONS === */
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            border: 2px solid transparent;
-        }
-        
-        .btn-primary {
-            background-color: var(--hard-red);
-            color: var(--white);
-        }
-        
-        .btn-primary:hover {
-            background-color: #c00510;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-outline {
-            border-color: var(--hard-red);
-            color: var(--hard-red);
-            background-color: transparent;
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--hard-red);
-            color: var(--white);
-        }
-        
-        /* === HEADER === */
+
+        /* Header Styles */
         header {
+            background-color: var(--blue-dark);
+            color: var(--white);
+            padding: 1rem 2rem;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            padding: 1rem 5%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: var(--transition);
         }
-        
-        .logo-container {
+
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
         }
-        
-        .logo {
-            height: 40px;
-            width: auto;
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
         }
-        
-        .logo-text {
-            font-weight: 700;
+
+        .logo-text h2 {
             font-size: 1.2rem;
-            color: var(--metalic-black);
+            font-weight: 600;
         }
-        
-        .logo-text span {
-            color: var(--hard-red);
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
         }
-        
-        nav a {
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
             position: relative;
         }
-        
-        nav a::after {
+
+        nav ul li a:hover {
+            color: var(--orange);
+        }
+
+        nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--hard-red);
-            transition: var(--transition);
+            background-color: var(--orange);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
         }
-        
-        nav a:hover::after {
+
+        nav ul li a:hover::after {
             width: 100%;
         }
-        
-        .admin-login {
-            margin-left: 2rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--metalic-black);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .admin-login:hover {
-            background-color: #333;
-        }
-        
-        .mobile-menu-btn {
+
+        .menu-toggle {
             display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
             cursor: pointer;
+            font-size: 1.5rem;
         }
-        
-        /* === HERO SECTION === */
+
+        /* Hero Section */
         .hero {
-            min-height: 100vh;
-            padding: 7rem 5% 2rem;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--metalic-black) 0%, #333 100%);
-        }
-        
-        .hero-content {
-            flex: 1;
-            padding-right: 2rem;
-        }
-        
-        .hero-image {
-            flex: 1;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1480&q=80') no-repeat center center/cover;
+            position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 70px;
         }
-        
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
         }
-        
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        #typing-text {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--blue-light);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--orange);
+        }
+
         .hero-buttons {
             display: flex;
+            justify-content: center;
             gap: 1rem;
-            margin-top: 2rem;
+            flex-wrap: wrap;
         }
-        
-        .typewriter {
-            border-right: 3px solid var(--hard-red);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+
+        .btn-primary {
+            background-color: var(--blue-light);
+            color: var(--black);
         }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--hard-red) }
+
+        .btn-primary:hover {
+            background-color: #008CBA;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        
-        /* === FEATURES SECTION === */
-        .features {
-            padding: 5rem 5%;
-            background-color: var(--white);
+
+        .btn-secondary {
+            border: 2px solid var(--orange);
+            color: var(--orange);
         }
-        
+
+        .btn-secondary:hover {
+            background-color: var(--orange);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            position: relative;
         }
-        
-        .section-title::after {
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--blue-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            width: 50%;
             height: 3px;
-            background-color: var(--hard-red);
+            background-color: var(--orange);
+            bottom: 0;
+            left: 25%;
         }
-        
-        .feature-cards {
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--gray);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--white);
+        }
+
+        .benefits-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-        }
-        
-        .feature-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            text-align: center;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(227, 6, 19, 0.1);
-            border-radius: 50%;
-        }
-        
-        .feature-icon img {
-            width: 40px;
-            height: 40px;
-        }
-        
-        /* === CATALOG SECTION === */
-        .catalog {
-            padding: 5rem 5%;
-            background-color: var(--neutral-gray);
-        }
-        
-        .catalog-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .catalog-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .catalog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .catalog-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .catalog-info {
-            padding: 1.5rem;
-        }
-        
-        /* === ABOUT SECTION === */
-        .about {
-            padding: 5rem 5%;
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-        }
-        
-        .about-content {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* === BENEFITS SECTION === */
-        .benefits {
-            padding: 5rem 5%;
-            background-color: var(--metalic-black);
-        }
-        
-        .benefits-list {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            background-color: var(--gray);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
-        
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
         .benefit-icon {
-            color: var(--hard-red);
-            font-size: 1.5rem;
-            min-width: 30px;
+            font-size: 3rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
         }
-        
-        /* === STATS SECTION === */
-        .stats {
-            padding: 5rem 5%;
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--blue-dark);
+        }
+
+        /* Features Section - Revisi */
+        .features {
+            background-color: var(--gray);
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-img {
+            height: 200px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover .feature-img img {
+            transform: scale(1.1);
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--blue-dark);
+        }
+
+        .feature-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .feature-btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--blue-dark);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .feature-btn:hover {
+            background-color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        /* Gallery Section */
+        .gallery {
             background-color: var(--white);
         }
-        
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Stats Section dengan Animasi */
+        .stats {
+            background-color: var(--blue-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
         .stats-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
-        .stat-box {
-            padding: 2rem;
+
+        .stat-item {
+            padding: 1rem;
         }
-        
-        .stat-number {
+
+        .stat-item h3 {
             font-size: 3rem;
             font-weight: 700;
-            color: var(--hard-red);
+            color: var(--orange);
             margin-bottom: 0.5rem;
         }
-        
-        /* === CONTACT SECTION === */
+
+        .stat-item p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
         .contact {
-            padding: 5rem 5%;
-            background-color: var(--neutral-gray);
+            background-color: var(--gray);
         }
-        
+
         .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-        
-        .contact-info {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
         }
-        
+
         .contact-icon {
-            color: var(--hard-red);
             font-size: 1.5rem;
-            min-width: 30px;
+            color: var(--orange);
+            margin-right: 1rem;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 165, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
         .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
-        .form-control {
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--blue-dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid var(--light-gray);
-            border-radius: 4px;
-            font-family: inherit;
-            transition: var(--transition);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
         }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--hard-red);
-            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
+
+        .form-group textarea {
+            height: 150px;
             resize: vertical;
         }
-        
-        /* === FOOTER === */
-        footer {
-            background-color: var(--metalic-black);
-            padding: 3rem 5%;
+
+        .rating {
+            display: flex;
+            gap: 0.5rem;
         }
-        
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 1.5rem;
+            color: #ddd;
+            cursor: pointer;
+        }
+
+        .rating input:checked ~ label {
+            color: var(--orange);
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: var(--orange);
+        }
+
+        .btn-submit {
+            background-color: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: #e69500;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Popup Terima Kasih */
+        .thank-you-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .thank-you-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .thank-you-popup.active .popup-content {
+            transform: translateY(0);
+        }
+
+        .popup-content h3 {
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .popup-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .popup-btn {
+            background-color: var(--orange);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-btn:hover {
+            background-color: #e69500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--blue-dark);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+        }
+
         .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            flex: 1;
+            min-width: 300px;
             margin-bottom: 2rem;
         }
-        
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+
+        .footer-logo img {
+            height: 60px;
             margin-bottom: 1rem;
         }
-        
-        .footer-links h3 {
-            color: var(--hard-red);
-            margin-bottom: 1.5rem;
+
+        .footer-logo p {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
-        
+
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--orange);
+        }
+
         .footer-links ul {
             list-style: none;
         }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
+
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
         }
-        
-        .footer-links a:hover {
-            color: var(--hard-red);
+
+        .footer-links ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
         }
-        
-        .copyright {
+
+        .footer-links ul li a:hover {
+            opacity: 1;
+            color: var(--orange);
+        }
+
+        .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            opacity: 0.8;
         }
-        
-        /* === RESPONSIVE DESIGN === */
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #e69500;
+            transform: translateY(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero {
-                flex-direction: column;
-                padding-top: 5rem;
-            }
-            
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                justify-content: center;
-            }
-            
-            .about {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .admin-login {
-                margin-left: 0;
-                margin-top: 1rem;
-                width: 100%;
-            }
-            
-            .hero-content h1 {
+            #typing-text {
                 font-size: 2rem;
             }
             
-            .section-title {
-                font-size: 1.8rem;
+            .hero p {
+                font-size: 1rem;
             }
         }
-        
-        @media (max-width: 576px) {
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--blue-dark);
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                clip-path: circle(0% at 100% 0);
+                transition: clip-path 0.5s ease;
+            }
+            
+            nav.active {
+                clip-path: circle(150% at 100% 0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+                text-align: center;
+            }
+            
+            .hero {
+                margin-top: 60px;
+            }
+            
+            #typing-text {
+                font-size: 1.8rem;
+            }
+            
             .hero-buttons {
                 flex-direction: column;
+                gap: 1rem;
             }
             
             .btn {
                 width: 100%;
             }
             
-            .feature-cards {
-                grid-template-columns: 1fr;
+            section {
+                padding: 3rem 1rem;
             }
             
-            .stats-container {
-                grid-template-columns: 1fr;
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-item h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #typing-text {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stat-item h3 {
+                font-size: 2rem;
+            }
+            
+            .stat-item p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header/Navbar -->
-    <header data-aos="fade-down">
-        <div class="logo-container">
-            <!-- SVG Logo in Base64 -->
-            <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="AutoServ Pro Logo">
-            <span class="logo-text">Auto<span>Serv</span> Pro</span>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/50" alt="Logo SMKN 1 Rangas">
+            <div class="logo-text">
+                <h2>TEKNIK OTOMOTIF</h2>
+                <p>UPTD SMKN 1 RANGAS</p>
+            </div>
         </div>
-        <button class="mobile-menu-btn">☰</button>
+        <div class="menu-toggle">☰</div>
         <nav>
-            <ul class="nav-links">
+            <ul>
+                <li><a href="#home">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
+                <li><a href="#benefits">Manfaat</a></li>
                 <li><a href="#features">Fitur</a></li>
-                <li><a href="#catalog">Katalog</a></li>
+                <li><a href="#gallery">Galeri</a></li>
                 <li><a href="#contact">Kontak</a></li>
-                <li><button class="admin-login">Admin</button></li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero dark-bg" id="home">
-        <div class="hero-content" data-aos="fade-right">
-            <h1 class="typewriter">Selamat Datang di AutoServ Pro</h1>
-            <p>Platform digital jurusan otomotif SMK. Edukasi, layanan, dan praktek berbasis web.</p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 id="typing-text"></h1>
+            <p>Portal Digital Pembelajaran dan Layanan Otomotif</p>
             <div class="hero-buttons">
-                <a href="#diagnosa" class="btn btn-primary">🔧 Mulai Diagnosa</a>
-                <a href="#catalog" class="btn btn-outline">📦 Lihat Katalog</a>
-            </div>
-        </div>
-        <div class="hero-image" data-aos="fade-left">
-            <!-- SVG Illustration in Base64 -->
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzFlMWYxZiIvPjxwYXRoIGQ9Ik0xMjUgMjUwYzAtNjkuMSA1Ni0xMjUgMTI1LTEyNXMxMjUgNTYgMTI1IDEyNS01NiAxMjUtMTI1IDEyNS0xMjUtNTYtMTI1LTEyNXoiIGZpbGw9IiNlMzA2MTMiIG9wYWNpdHk9Ii4yIi8+PHBhdGggZD0iTTI1MCAxMjVjLTY5LjEgMC0xMjUgNTYtMTI1IDEyNXM1NiAxMjUgMTI1IDEyNSAxMjUtNTYgMTI1LTEyNS01Ni0xMjUtMTI1LTEyNXptMCAyMjVjLTU1LjIgMC0xMDAtNDUtMTAwLTEwMHM0NS0xMDAgMTAwLTEwMCAxMDAgNDUgMTAwIDEwMC00NSAxMDAtMTAwIDEwMHoiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PHBhdGggZD0iTTI1MCAxNTBjLTU1LjIgMC0xMDAgNDUtMTAwIDEwMHM0NSAxMDAgMTAwIDEwMCAxMDAtNDUgMTAwLTEwMC00NS0xMDAtMTAwLTEwMHptMCAxNTBjLTI3LjYgMC01MC0yMi41LTUwLTUwIDAtMjcuNiAyMi41LTUwIDUwLTUwczUwIDIyLjUgNTAgNTBjMCAyNy42LTIyLjUgNTAtNTAgNTB6IiBmaWxsPSIjZTMwNjEzIi8+PC9zdmc+" alt="Teknisi bekerja">
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <h2 class="section-title" data-aos="fade-up">Fitur Unggulan AutoServ Pro</h2>
-        <div class="feature-cards">
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="feature-icon">
-                    <!-- SVG Icon in Base64 -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="Diagnosa Icon">
-                </div>
-                <h3>Simulasi Diagnosa</h3>
-                <p>Pelajari teknik diagnosa mesin kendaraan dengan simulasi interaktif berbasis kasus nyata.</p>
-                <a href="#diagnosa" class="btn btn-outline">Pelajari Lebih Lanjut</a>
-            </div>
-            
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="feature-icon">
-                    <!-- SVG Icon in Base64 -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNNDQ4IDBINjRDMjguNyAwIDAgMjguNyAwIDY0djI4OGMwIDM1LjMgMjguNyA2NCA2NCA2NGgxNDRsMTI4IDEyOGM5LjQgOS40IDI0LjYgOS40IDMzLjkgMGwyNS0yNWM5LjQgOS40IDkuNC0yNC42IDAtMzMuOUwyODcuOSAzMjBINDQ4YzM1LjMgMCA2NC0yOC43IDY0LTY0VjY0YzAtMzUuMy0yOC43LTY0LTY0LTY0em0tODAgMzUySDY0VjY0aDMwNHYyODh6bTEyOC0xOTJoLTMyYy04LjggMC0xNi03LjItMTYtMTZzNy4yLTE2IDE2LTE2aDMyYzguOCAwIDE2IDcuMiAxNiAxNnMtNy4yIDE2LTE2IDE2em0tMTY4IDY0YzAgOC44IDcuMiAxNiAxNiAxNmgxMjBjOC44IDAgMTYtNy4yIDE2LTE2cy03LjItMTYtMTYtMTZIMzI4Yy04LjggMC0xNiA3LjItMTYgMTZ6bS0xNDQtMGMwLTguOC03LjItMTYtMTYtMTZINzZjLTguOCAwLTE2IDcuMi0xNiAxNnM3LjIgMTYgMTYgMTZoMzJjOC44IDAgMTYtNy4yIDE2LTE2em0wLTk2YzAtOC44LTcuMi0xNi0xNi0xNkg3NmMtOC44IDAtMTYgNy4yLTE2IDE2czcuMiAxNiAxNiAxNmgzMmM4LjggMCAxNi03LjIgMTYtMTZ6Ii8+PC9zdmc+" alt="Booking Icon">
-                </div>
-                <h3>Booking Servis</h3>
-                <p>Sistem booking bengkel digital untuk praktik langsung siswa dan layanan masyarakat.</p>
-                <a href="#booking" class="btn btn-outline">Pelajari Lebih Lanjut</a>
-            </div>
-            
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="feature-icon">
-                    <!-- SVG Icon in Base64 -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNNDY0IDQ0OEg0OGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhWMTEyYzAtMjYuNSAyMS41LTQ4IDQ4LTQ4aDQxNmMyNi41IDAgNDggMjEuNSA0OCA0OHYyODhjMCAyNi41LTIxLjUgNDgtNDggNDh6TTEyOCAxMjBjLTguOCAwLTE2IDcuMi0xNiAxNnY2NGMwIDguOCA3LjIgMTYgMTYgMTZoMjU2YzguOCAwIDE2LTcuMiAxNi0xNnYtNjRjMC04LjgtNy4yLTE2LTE2LTE2SDEyOHptMCAyNTZjLTguOCAwLTE2IDcuMi0xNiAxNnY2NGMwIDguOCA3LjIgMTYgMTYgMTZoMTkyYzguOCAwIDE2LTcuMiAxNi0xNnYtNjRjMC04LjgtNy4yLTE2LTE2LTE2SDEyOHoiLz48L3N2Zz4=" alt="Laporan Icon">
-                </div>
-                <h3>Laporan PKL</h3>
-                <p>Sistem digital untuk pencatatan dan pengelolaan laporan Praktik Kerja Lapangan siswa.</p>
-                <a href="#pkl" class="btn btn-outline">Pelajari Lebih Lanjut</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Catalog Section -->
-    <section class="catalog" id="catalog">
-        <h2 class="section-title" data-aos="fade-up">Katalog Populer</h2>
-        <div class="catalog-items">
-            <div class="catalog-card" data-aos="fade-up" data-aos-delay="100">
-                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PC9zdmc+" alt="Alat Bengkel">
-                <div class="catalog-info">
-                    <h3>Alat Diagnosa Digital</h3>
-                    <p>Perangkat modern untuk analisis sistem elektronik kendaraan</p>
-                    <a href="#" class="btn btn-primary">Lihat Detail</a>
-                </div>
-            </div>
-            
-            <div class="catalog-card" data-aos="fade-up" data-aos-delay="200">
-                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxwYXRoIGQ9Ik0xMDAgMTUwTDI1MCA1MGwxNTAgMTAwLTE1MCAxMDAgMTUwIDEwMC0xNTAgMTAwWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTMwNjEzIiBzdHJva2Utd2lkdGg9IjEwIi8+PC9zdmc+" alt="Sparepart">
-                <div class="catalog-info">
-                    <h3>Sparepart Original</h3>
-                    <p>Komponen berkualitas untuk berbagai jenis kendaraan</p>
-                    <a href="#" class="btn btn-primary">Lihat Detail</a>
-                </div>
-            </div>
-            
-            <div class="catalog-card" data-aos="fade-up" data-aos-delay="300">
-                <img class="catalog-img" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgMzAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iIzFlMWYxZiIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iMTAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMzA2MTMiIHN0cm9rZS13aWR0aD0iMTAiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlMzA2MTMiIHN0cm9rZS13aWR0aD0iMTAiLz48bGluZSB4MT0iMjUwIiB5MT0iNTAiIHgyPSIyNTAiIHkyPSIyNTAiIHN0cm9rZT0iI2UzMDYxMyIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxsaW5lIHgxPSI1MCIgeTE9IjE1MCIgeDI9IjQ1MCIgeTI9IjE1MCIgc3Ryb2tlPSIjZTMwNjEzIiBzdHJva2Utd2lkdGg9IjEwIi8+PC9zdmc+" alt="Toolkit">
-                <div class="catalog-info">
-                    <h3>Toolkit Mekanik</h3>
-                    <p>Set perlengkapan lengkap untuk perawatan kendaraan</p>
-                    <a href="#" class="btn btn-primary">Lihat Detail</a>
-                </div>
+                <a href="#features" class="btn btn-primary">Lihat Fitur</a>
+                <a href="#about" class="btn btn-secondary">Tujuan Web</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="about-content" data-aos="fade-right">
-            <h2 class="section-title">Tentang AutoServ Pro</h2>
-            <p>AutoServ Pro adalah platform edukasi otomotif digital yang dikembangkan khusus untuk siswa SMK jurusan otomotif. Platform ini dirancang untuk mendukung pembelajaran teori dan praktik secara terintegrasi.</p>
-            <p>Dikembangkan oleh tim siswa dan guru SMK Otomotif yang berpengalaman, AutoServ Pro menggabungkan pengetahuan teknis dengan teknologi digital untuk menciptakan pengalaman belajar yang lebih interaktif dan efektif.</p>
-            <p>Platform ini tidak hanya berguna untuk siswa, tetapi juga menjadi alat bantu bagi guru dalam menyampaikan materi dan memantau perkembangan siswa.</p>
+        <div class="section-title">
+            <h2>Tentang Program Kami</h2>
+            <p>Program Teknik Otomotif SMKN 1 Rangas mempersiapkan siswa untuk menjadi tenaga profesional di bidang otomotif</p>
         </div>
-        <div class="about-image" data-aos="fade-left">
-            <!-- SVG Illustration in Base64 -->
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2UwZTBjMCIvPjxwYXRoIGQ9Ik0xMjUgMjUwYzAtNjkuMSA1Ni0xMjUgMTI1LTEyNXMxMjUgNTYgMTI1IDEyNS01NiAxMjUtMTI1IDEyNS0xMjUtNTYtMTI1LTEyNXoiIGZpbGw9IiNlMzA2MTMiIG9wYWNpdHk9Ii4xIi8+PHBhdGggZD0iTTI1MCAxMjVjLTY5LjEgMC0xMjUgNTYtMTI1IDEyNXM1NiAxMjUgMTI1IDEyNSAxMjUtNTYgMTI1LTEyNS01Ni0xMjUtMTI1LTEyNXptMCAyMjVjLTU1LjIgMC0xMDAtNDUtMTAwLTEwMHM0NS0xMDAgMTAwLTEwMCAxMDAgNDUgMTAwIDEwMC00NSAxMDAtMTAwIDEwMHoiIGZpbGw9IiNlMzA2MTMiLz48Y2lyY2xlIGN4PSIyNTAiIGN5PSIyNTAiIHI9IjUwIiBmaWxsPSIjZjBmMGYwIi8+PHBhdGggZD0iTTI1MCAxNTBjLTU1LjIgMC0xMDAgNDUtMTAwIDEwMHM0NSAxMDAgMTAwIDEwMCAxMDAtNDUgMTAwLTEwMC00NS0xMDAtMTAwLTEwMHptMCAxNTBjLTI3LjYgMC01MC0yMi41LTUwLTUwIDAtMjcuNiAyMi41LTUwIDUwLTUwczUwIDIyLjUgNTAgNTBjMCAyNy42LTIyLjUgNTAtNTAgNTB6IiBmaWxsPSIjZTMwNjEzIi8+PC9zdmc+" alt="Tim Pengembang">
+        <div class="about-container">
+            <div class="about-text fade-in">
+                <h3>Mengapa Memilih Jurusan Kami?</h3>
+                <p>Jurusan Teknik Otomotif UPTD SMKN 1 Rangas merupakan salah satu program keahlian unggulan yang menyiapkan lulusan kompeten di bidang otomotif dengan standar industri.</p>
+                <p>Kami memiliki fasilitas praktik lengkap, guru berpengalaman, dan kurikulum berbasis kompetensi yang terus diperbarui sesuai perkembangan teknologi otomotif terkini.</p>
+                <p>Lulusan kami telah terserap di berbagai industri otomotif ternama dan banyak yang melanjutkan ke perguruan tinggi teknik.</p>
+            </div>
+            <div class="about-image fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1581093196277-1e31613f7dd4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Siswa Praktik Otomotif">
+            </div>
         </div>
     </section>
 
     <!-- Benefits Section -->
-    <section class="benefits dark-bg">
-        <h2 class="section-title" data-aos="fade-up">Tujuan dan Manfaat</h2>
-        <div class="benefits-list">
-            <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="benefit-icon">✓</div>
-                <div>
-                    <h3>Akses Belajar Digital</h3>
-                    <p>Materi pembelajaran otomotif dapat diakses kapan saja dan di mana saja melalui platform digital.</p>
+    <section class="benefits" id="benefits">
+        <div class="section-title">
+            <h2>Tujuan & Manfaat</h2>
+            <p>Bergabung dengan program kami memberikan banyak keuntungan untuk masa depan Anda</p>
+        </div>
+        <div class="benefits-container">
+            <div class="benefit-item fade-in">
+                <div class="benefit-icon">🔧</div>
+                <h3>Keterampilan Praktis</h3>
+                <p>Mendapatkan keterampilan praktis langsung di bengkel dengan peralatan modern sesuai standar industri.</p>
+            </div>
+            <div class="benefit-item fade-in delay-1">
+                <div class="benefit-icon">📜</div>
+                <h3>Sertifikasi Kompetensi</h3>
+                <p>Mendapatkan sertifikat kompetensi yang diakui industri setelah lulus uji kompetensi.</p>
+            </div>
+            <div class="benefit-item fade-in delay-2">
+                <div class="benefit-icon">🤝</div>
+                <h3>Link dengan Industri</h3>
+                <p>Kesempatan magang dan penempatan kerja di perusahaan otomotif ternama mitra sekolah.</p>
+            </div>
+            <div class="benefit-item fade-in delay-3">
+                <div class="benefit-icon">🎓</div>
+                <h3>Kesempatan Kuliah</h3>
+                <p>Beasiswa untuk melanjutkan pendidikan ke perguruan tinggi teknik bagi siswa berprestasi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section - Revisi dengan Tombol -->
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Fitur Utama</h2>
+            <p>Berbagai fitur unggulan yang tersedia untuk mendukung pembelajaran otomotif</p>
+        </div>
+        <div class="features-container">
+            <div class="feature-card fade-in">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Diagnosa Kendaraan">
+                </div>
+                <div class="feature-content">
+                    <h3>Sistem Diagnosa</h3>
+                    <p>Alat diagnosa digital untuk menganalisis masalah pada kendaraan dengan akurat.</p>
+                    <a href="diagnosa.html" class="feature-btn">Masuk ke Fitur</a>
                 </div>
             </div>
-            
-            <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="benefit-icon">✓</div>
-                <div>
-                    <h3>Praktik Mandiri Simulasi</h3>
-                    <p>Simulasi interaktif memungkinkan siswa berlatih diagnosa dan perbaikan secara virtual sebelum praktik langsung.</p>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1583912915243-4ae3a5b81b9b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Booking Service">
+                </div>
+                <div class="feature-content">
+                    <h3>Booking Service</h3>
+                    <p>Sistem reservasi online untuk layanan perawatan dan perbaikan kendaraan.</p>
+                    <a href="booking.html" class="feature-btn">Masuk ke Fitur</a>
                 </div>
             </div>
-            
-            <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="benefit-icon">✓</div>
-                <div>
-                    <h3>Laporan PKL Online</h3>
-                    <p>Sistem terintegrasi untuk pencatatan dan pengelolaan laporan Praktik Kerja Lapangan secara digital.</p>
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="PKL Industri">
+                </div>
+                <div class="feature-content">
+                    <h3>Program PKL</h3>
+                    <p>Kerjasama dengan industri untuk Praktek Kerja Lapangan bagi siswa.</p>
+                    <a href="pkl.html" class="feature-btn">Masuk ke Fitur</a>
                 </div>
             </div>
-            
-            <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="benefit-icon">✓</div>
-                <div>
-                    <h3>Booking Servis Real</h3>
-                    <p>Siswa dapat mempraktikkan pengetahuan mereka dengan melayani masyarakat melalui sistem booking terintegrasi.</p>
+            <div class="feature-card fade-in delay-3">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Katalog Komponen">
+                </div>
+                <div class="feature-content">
+                    <h3>Katalog Komponen</h3>
+                    <p>Database lengkap komponen kendaraan dengan spesifikasi teknis.</p>
+                    <a href="katalog.html" class="feature-btn">Masuk ke Fitur</a>
+                </div>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Materi Pembelajaran">
+                </div>
+                <div class="feature-content">
+                    <h3>Materi Pembelajaran</h3>
+                    <p>Modul digital dan video tutorial untuk mendukung proses belajar.</p>
+                    <a href="materi.html" class="feature-btn">Masuk ke Fitur</a>
+                </div>
+            </div>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-img">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Statistik Keahlian">
+                </div>
+                <div class="feature-content">
+                    <h3>Statistik Keahlian</h3>
+                    <p>Monitoring perkembangan keterampilan siswa secara real-time.</p>
+                    <a href="statistik.html" class="feature-btn">Masuk ke Fitur</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-title">
+            <h2>Galeri Kegiatan</h2>
+            <p>Momen-momen penting dalam proses pembelajaran di jurusan kami</p>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Praktik Otomotif">
+            </div>
+            <div class="gallery-item fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bengkel Sekolah">
+            </div>
+            <div class="gallery-item fade-in delay-2">
+                <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Siswa Belajar">
+            </div>
+            <div class="gallery-item fade-in delay-3">
+                <img src="https://images.unsplash.com/photo-1581093057305-409e0ff5d1a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Perlombaan">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Kunjungan Industri">
+            </div>
+            <div class="gallery-item fade-in delay-1">
+                <img src="https://images.unsplash.com/photo-1581093057923-ff7a527892c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wisuda">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section dengan Animasi -->
     <section class="stats">
-        <h2 class="section-title" data-aos="fade-up">Statistik AutoServ Pro</h2>
         <div class="stats-container">
-            <div class="stat-box" data-aos="fade-up" data-aos-delay="100">
-                <div class="stat-number" id="student-counter">0</div>
-                <p>Siswa Aktif</p>
+            <div class="stat-item fade-in">
+                <h3 class="counter" data-target="15">0</h3>
+                <p>Tahun Pengalaman</p>
             </div>
-            
-            <div class="stat-box" data-aos="fade-up" data-aos-delay="200">
-                <div class="stat-number" id="service-counter">0</div>
-                <p>Servis Berhasil</p>
+            <div class="stat-item fade-in delay-1">
+                <h3 class="counter" data-target="1200">0</h3>
+                <p>Siswa Lulusan</p>
             </div>
-            
-            <div class="stat-box" data-aos="fade-up" data-aos-delay="300">
-                <div class="stat-number" id="report-counter">0</div>
-                <p>Laporan PKL</p>
+            <div class="stat-item fade-in delay-2">
+                <h3 class="counter" data-target="95">0</h3>
+                <p>Penyerapan Kerja</p>
             </div>
-            
-            <div class="stat-box" data-aos="fade-up" data-aos-delay="400">
-                <div class="stat-number" id="visit-counter">0</div>
-                <p>Kunjungan Hari Ini</p>
+            <div class="stat-item fade-in delay-3">
+                <h3 class="counter" data-target="25">0</h3>
+                <p>Mitra Industri</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact gray-bg" id="contact">
-        <h2 class="section-title" data-aos="fade-up">Hubungi Kami</h2>
+    <!-- Contact Section dengan Popup Feedback -->
+    <section class="contact" id="contact">
+        <div class="section-title">
+            <h2>Hubungi Kami</h2>
+            <p>Kirim pertanyaan, saran, atau pendaftaran melalui form berikut</p>
+        </div>
         <div class="contact-container">
-            <div class="contact-info" data-aos="fade-right">
+            <div class="contact-info fade-in">
+                <h3>Informasi Kontak</h3>
+                <p>Silakan hubungi kami jika Anda memiliki pertanyaan tentang program Teknik Otomotif SMKN 1 Rangas.</p>
+                
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div>
-                        <h3>Lokasi</h3>
-                        <p>SMK Otomotif Teknologi<br>Jl. Pendidikan No. 123, Kota Pendidikan</p>
+                        <p><strong>Alamat:</strong> Jl. Pendidikan No. 123, Rangas, Kalimantan Selatan</p>
                     </div>
                 </div>
                 
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
                     <div>
-                        <h3>Telepon</h3>
-                        <p>(021) 1234-5678</p>
+                        <p><strong>Telepon:</strong> (0511) 1234567</p>
                     </div>
                 </div>
                 
                 <div class="contact-item">
                     <div class="contact-icon">✉️</div>
                     <div>
-                        <h3>Email</h3>
-                        <p>info@autoservpro.edu</p>
+                        <p><strong>Email:</strong> otomotif@smkn1rangas.sch.id</p>
                     </div>
                 </div>
                 
-                <a href="https://wa.me/6281234567890" class="btn btn-primary" style="margin-top: 1rem;">Chat via WhatsApp</a>
+                <a href="https://wa.me/6281234567890" class="whatsapp-btn">
+                    <span class="whatsapp-icon">💬</span>
+                    Chat via WhatsApp
+                </a>
             </div>
             
-            <div class="contact-form" data-aos="fade-left">
-                <form>
+            <div class="contact-form fade-in delay-1">
+                <form id="feedback-form">
                     <div class="form-group">
                         <label for="name">Nama Lengkap</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subjek</label>
-                        <input type="text" id="subject" class="form-control" required>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Pesan</label>
-                        <textarea id="message" rows="5" class="form-control" required></textarea>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1">★</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Kirim Pesan</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="dark-bg">
+    <!-- Popup Terima Kasih -->
+    <div class="thank-you-popup" id="thankYouPopup">
+        <div class="popup-content">
+            <h3>Terima Kasih!</h3>
+            <p id="thankYouMessage">Terima kasih atas feedback Anda! Kami sangat menghargai waktu dan masukan yang Anda berikan.</p>
+            <button class="popup-btn" id="closePopup">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Footer yang Bisa Disesuaikan -->
+    <footer>
         <div class="footer-container">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img class="logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZTMwNjEzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN0wtMzYxLjggMjU2bDEwNC4xIDEwNC4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN2wtMjguMyAyOC4zYy00LjcgNC43LTEyLjMgNC43LTE3IDBMMjU2IDMwNS4xbC0xMDQuMSAxMDQuMWMtNC43IDQuNy0xMi4zIDQuNy0xNyAwbC0yOC4zLTI4LjNjLTQuNy00LjctNC43LTEyLjMgMC0xN0wxNTAuMiAyNTYgNDYuMSAxNTEuOWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDI4LjMtMjguM2M0LjctNC43IDEyLjMtNC43IDE3IDBMMjU2IDIwNi45bDEwNC4xLTEwNC4xYzQuNy00LjcgMTIuMy00LjcgMTcgMGwyOC4zIDI4LjNjNC43IDQuNyA0LjcgMTIuMyAwIDE3WiIvPjwvc3ZnPg==" alt="AutoServ Pro Logo">
-                    <span class="logo-text">Auto<span>Serv</span> Pro</span>
-                </div>
-                <p>Platform Edukasi & Diagnosa Otomotif Digital untuk Siswa SMK</p>
+            <div class="footer-logo">
+                <img src="logo-sekolah.png" alt="Logo SMKN 1 Rangas">
+                <p>Jurusan Teknik Otomotif UPTD SMKN 1 Rangas merupakan program keahlian unggulan yang mempersiapkan tenaga terampil di bidang otomotif sesuai kebutuhan industri.</p>
+                <p>© <span id="current-year"></span> SMKN 1 Rangas. All Rights Reserved.</p>
             </div>
             
             <div class="footer-links">
-                <h3>Menu</h3>
+                <h3>Link Cepat</h3>
                 <ul>
                     <li><a href="#home">Beranda</a></li>
-                    <li><a href="#features">Fitur</a></li>
-                    <li><a href="#catalog">Katalog</a></li>
                     <li><a href="#about">Tentang</a></li>
+                    <li><a href="#benefits">Manfaat</a></li>
+                    <li><a href="#features">Fitur</a></li>
+                    <li><a href="#gallery">Galeri</a></li>
                     <li><a href="#contact">Kontak</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
-                <h3>Layanan</h3>
+                <h3>Informasi</h3>
                 <ul>
-                    <li><a href="#diagnosa">Simulasi Diagnosa</a></li>
-                    <li><a href="#booking">Booking Servis</a></li>
-                    <li><a href="#pkl">Laporan PKL</a></li>
-                    <li><a href="#learning">E-Learning</a></li>
+                    <li><a href="pendaftaran.html">Syarat Pendaftaran</a></li>
+                    <li><a href="jadwal.html">Jadwal Pelajaran</a></li>
+                    <li><a href="kalender.html">Kalender Akademik</a></li>
+                    <li><a href="berita.html">Berita Terkini</a></li>
+                    <li><a href="prestasi.html">Prestasi Siswa</a></li>
                 </ul>
             </div>
             
             <div class="footer-links">
-                <h3>Legal</h3>
+                <h3>Admin</h3>
                 <ul>
-                    <li><a href="#">Syarat & Ketentuan</a></li>
-                    <li><a href="#">Kebijakan Privasi</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Admin Login</a></li>
+                    <li><a href="login-guru.html">Login Guru</a></li>
+                    <li><a href="login-siswa.html">Login Siswa</a></li>
+                    <li><a href="ppdb.html">PPDB Online</a></li>
+                    <li><a href="elearning.html">E-Learning</a></li>
                 </ul>
             </div>
         </div>
         
-        <div class="copyright">
-            <p>© 2025 AutoServ Pro. Seluruh hak cipta dilindungi.</p>
-            <p>Dikembangkan oleh Tim Otomotif SMK Teknologi</p>
+        <div class="footer-bottom">
+            <p>Dikembangkan oleh Tim Teknik Otomotif SMKN 1 Rangas</p>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">↑</div>
+
     <!-- JavaScript -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-        
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('show');
-            });
-        });
-        
-        // Counter Animation
-        function animateCounter(element, target, duration) {
-            const start = 0;
-            const increment = target / (duration / 16);
-            let current = start;
-            const counter = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    clearInterval(counter);
-                    element.textContent = target + "+";
-                } else {
-                    element.textContent = Math.floor(current);
-                }
-            }, 16);
-        }
-        
-        // Start counters when stats section is in view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(document.getElementById('student-counter'), 1250, 2000);
-                    animateCounter(document.getElementById('service-counter'), 543, 1500);
-                    animateCounter(document.getElementById('report-counter'), 287, 1000);
-                    animateCounter(document.getElementById('visit-counter'), 89, 800);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        observer.observe(document.querySelector('.stats'));
-        
-        // Sticky Header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
-        });
-        
-        // Typewriter Effect
-        const typewriterElement = document.querySelector('.typewriter');
-        const text = "Selamat Datang di AutoServ Pro";
-        typewriterElement.textContent = '';
-        
-        let i = 0;
+        // Typing Animation
+        const typingText = document.getElementById('typing-text');
+        const text = "TEKNIK OTOMOTIF UPTD SMKN 1 RANGAS";
+        let index = 0;
+
         function typeWriter() {
-            if (i < text.length) {
-                typewriterElement.textContent += text.charAt(i);
-                i++;
+            if (index < text.length) {
+                typingText.innerHTML += text.charAt(index);
+                index++;
                 setTimeout(typeWriter, 100);
-            } else {
-                typewriterElement.style.borderRight = 'none';
             }
         }
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                if(this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    
+                    nav.classList.remove('active');
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation
+        function checkScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Animasi Counter untuk Statistik
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Form Submission dengan Popup Terima Kasih
+        const feedbackForm = document.getElementById('feedback-form');
+        const thankYouPopup = document.getElementById('thankYouPopup');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        const closePopup = document.getElementById('closePopup');
         
-        // Start typewriter effect after a slight delay
-        setTimeout(typeWriter, 500);
+        feedbackForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const rating = document.querySelector('input[name="rating"]:checked')?.value;
+            
+            // Simulasi pengiriman data
+            console.log({ name, email, message, rating });
+            
+            // Tampilkan pesan berbeda berdasarkan rating
+            let messageText = "Terima kasih atas feedback Anda!";
+            
+            if (rating >= 4) {
+                messageText += " Kami senang Anda puas dengan layanan kami!";
+            } else if (rating >= 2) {
+                messageText += " Kami akan terus meningkatkan layanan kami.";
+            } else {
+                messageText += " Mohon maaf atas ketidakpuasan Anda. Kami akan segera memperbaiki.";
+            }
+            
+            thankYouMessage.textContent = messageText;
+            thankYouPopup.classList.add('active');
+            
+            // Reset form
+            feedbackForm.reset();
+        });
+
+        // Tutup popup
+        closePopup.addEventListener('click', () => {
+            thankYouPopup.classList.remove('active');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+            
+            checkScroll();
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Tahun otomatis di footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Inisialisasi
+        window.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
+            checkScroll();
+            
+            // Animate counters when stats section is in view
+            const statsSection = document.querySelector('.stats');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            observer.observe(statsSection);
+            
+            // Add fade-in class to all elements that should animate
+            const animateElements = document.querySelectorAll('.fade-in, .delay-1, .delay-2, .delay-3');
+            animateElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+        });
     </script>
 </body>
 </html>
