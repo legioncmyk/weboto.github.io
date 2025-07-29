@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosa Kendaraan Digital | SMK Otomotif</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="diagnosa.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 15H16V13H18V15ZM18 19H16V17H18V19ZM6 15H4V13H6V15ZM6 19H4V17H6V19ZM10 11H8V9H10V11ZM10 15H8V13H10V15ZM10 19H8V17H10V19ZM14 11H12V9H14V11ZM14 15H12V13H14V15ZM14 19H12V17H14V19ZM22 9H20V7C20 5.9 19.1 5 18 5H4C2.9 5 2 5.9 2 7V19C2 20.1 2.9 21 4 21H18C19.1 21 20 20.1 20 19V17H22V15H20V13H22V11H20V9H22ZM18 19H4V7H18V19Z" fill="#00b4d8"/>
+                </svg>
+                <h1>Diagnosa Kendaraan</h1>
+            </div>
+            <p class="subtitle">Alat bantu diagnosa kerusakan kendaraan untuk pelajar SMK Otomotif dan mekanik pemula</p>
+        </header>
+
+        <main>
+            <div class="diagnosa-form">
+                <div class="form-group">
+                    <label for="gejala">Pilih Gejala:</label>
+                    <select id="gejala" class="form-control">
+                        <option value="" disabled selected>-- Pilih gejala yang dialami --</option>
+                        <option value="mesin_tidak_menyala">Mesin tidak menyala</option>
+                        <option value="asap_putih">Keluar asap putih dari knalpot</option>
+                        <option value="suara_aneh">Suara aneh saat idle</option>
+                        <option value="mesin_bergetar">Mesin bergetar tidak normal</option>
+                        <option value="bensin_boros">Konsumsi bensin lebih boros</option>
+                        <option value="lampu_mesin">Lampu indikator mesin menyala</option>
+                        <option value="susah_starter">Susah di-starter saat dingin</option>
+                        <option value="tenaga_berkurang">Tenaga mesin berkurang</option>
+                    </select>
+                </div>
+                <button id="btn-diagnosa" class="btn-primary">Diagnosa Sekarang</button>
+            </div>
+
+            <div id="hasil-diagnosa" class="diagnosa-result hidden">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h2>Hasil Diagnosa</h2>
+                        <div class="result-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#00b4d8"/>
+                                <path d="M12 7C11.45 7 11 7.45 11 8V13C11 13.55 11.45 14 12 14C12.55 14 13 13.55 13 13V8C13 7.45 12.55 7 12 7ZM11 15V17H13V15H11Z" fill="#00b4d8"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="result-body">
+                        <h3 id="diagnosa-judul">Gejala: <span id="gejala-terpilih"></span></h3>
+                        <p id="diagnosa-deskripsi">Silakan pilih gejala terlebih dahulu untuk melihat hasil diagnosa.</p>
+                        <div class="result-solution">
+                            <h4>Solusi yang direkomendasikan:</h4>
+                            <ul id="diagnosa-solusi"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 SMK Otomotif | Alat Diagnosa Kendaraan Digital</p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <!-- Aplikasi JavaScript -->
+    <script src="firebase-config.js"></script>
+    <script src="firebase-diagnosa.js"></script>
+    <script src="diagnosa.js"></script>
+</body>
+</html>
