@@ -1,1 +1,239 @@
+:root {
+    --primary-color: #00b4d8;
+    --primary-dark: #0096c7;
+    --secondary-color: #48cae4;
+    --bg-dark: #0d0d0d;
+    --bg-darker: #080808;
+    --text-light: #e0e0e0;
+    --text-lighter: #ffffff;
+    --text-gray: #a0a0a0;
+    --card-bg: #1a1a1a;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.logo svg {
+    flex-shrink: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin: 0;
+}
+
+.subtitle {
+    color: var(--text-gray);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.diagnosa-form {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-lighter);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    background-color: var(--bg-darker);
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.diagnosa-result {
+    transition: all 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.result-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 180, 216, 0.1);
+    border-bottom: 1px solid #333;
+}
+
+.result-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.result-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.result-body {
+    padding: 20px;
+}
+
+.result-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--text-lighter);
+}
+
+.result-body h3 span {
+    color: var(--primary-color);
+}
+
+.result-body p {
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.result-solution {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.result-solution h4 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.result-solution ul {
+    padding-left: 20px;
+}
+
+.result-solution li {
+    margin-bottom: 8px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .diagnosa-form {
+        padding: 20px;
+    }
+    
+    .result-header h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}
